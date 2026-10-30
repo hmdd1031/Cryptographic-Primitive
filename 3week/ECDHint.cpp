@@ -18,6 +18,7 @@ void bits_inv(vector<int> *bits, int r);
 void EC_mult(EC E, Point *R, Point P, int r);
 
 int main(){
+<<<<<<< HEAD
     int x = 5; 
     int mod = 0;
     
@@ -35,13 +36,34 @@ int main(){
     
     EC_double(E, &doubled, A);
     cout << "2A = : (" << doubled.x << ", " << doubled.y << ")" << endl;
+=======
+    Point R;
+    EC E = {2, 3, 5};
+
+    Point A = {1, 1};
+    Point B = {3, 1};
+    cout << "A = : (" << A.x << ", " << A.y << ")" << endl;
+    cout << "B = : (" << B.x << ", " << B.y << ")" << endl;
+
+    EC_add(E, &R, A, B);
+    cout << "A + B = : (" << R.x << ", " << R.y << ")" << endl;
+    
+    EC_double(E, &R, A);
+    cout << "2A = : (" << R.x << ", " << R.y << ")" << endl;
+
+    EC_mult(E, &R, A, 9);
+    cout << "9A = : (" << R.x << ", " << R.y << ")" << endl;
+>>>>>>> 6528524bdc9ede3cabe8595b750961bd98b3c07a
 
     return 0;
 }
 
 int mod_inv(int x, int mod){
+<<<<<<< HEAD
     int r; 
 
+=======
+>>>>>>> 6528524bdc9ede3cabe8595b750961bd98b3c07a
     if(x == 0)
         return 0;
 
@@ -52,7 +74,11 @@ int mod_inv(int x, int mod){
         while(x < 0)
             x += mod;
         
+<<<<<<< HEAD
         for(; r < mod; r++){
+=======
+        for(int r = 0; r < mod; r++){
+>>>>>>> 6528524bdc9ede3cabe8595b750961bd98b3c07a
             if((r*x) % mod == 1)
                 return r;
         }
@@ -66,7 +92,12 @@ void EC_add(EC E, Point *R, Point P, Point Q){
         *R = Q;
     
     else if(Q.x == 0 && Q.y == 0)
+<<<<<<< HEAD
         cout << "error" << endl;
+=======
+        *R = P;
+    
+>>>>>>> 6528524bdc9ede3cabe8595b750961bd98b3c07a
     else{
         int r = mod_inv((Q.x - P.x), E.p);
 
@@ -100,8 +131,13 @@ void EC_double(EC E, Point *R, Point P){
     int r = mod_inv(2*P.y, E.p);
 
     if(r == 0){
+<<<<<<< HEAD
         R->x;
         R->y;
+=======
+        R->x = 0;
+        R->y = 0;
+>>>>>>> 6528524bdc9ede3cabe8595b750961bd98b3c07a
     }
     else if(r < 0)
         cout << "error" << endl;
@@ -134,8 +170,15 @@ void EC_mult(EC E, Point *R, Point P, int r){
         R->x = 0;
         R->y = 0;
     }
+<<<<<<< HEAD
     else if(r <= 0)
         cout << "error" << endl;
+=======
+
+    else if(r <= 0)
+        cout << "error" << endl;
+
+>>>>>>> 6528524bdc9ede3cabe8595b750961bd98b3c07a
     else {
         bits_inv(&bits, r);
         n = bits.size();
