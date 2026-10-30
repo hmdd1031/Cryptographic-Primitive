@@ -32,8 +32,8 @@ int main(){
     EC_double(E, &R, A);
     cout << "2A = : (" << R.x << ", " << R.y << ")" << endl;
 
-    EC_mult(E, &R, A, 9);
-    cout << "9A = : (" << R.x << ", " << R.y << ")" << endl;
+    EC_mult(E, &R, A, 2);
+    cout << "2A = : (" << R.x << ", " << R.y << ")" << endl;
 
     return 0;
 }
@@ -127,6 +127,7 @@ void bits_inv(vector<int> *bits, int r){
 void EC_mult(EC E, Point *R, Point P, int r){
     vector<int> bits;
     int n;
+
 
     if(P.x == 0 && P.y == 0){
         R->x = 0;
